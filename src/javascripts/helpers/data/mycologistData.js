@@ -17,4 +17,6 @@ const getMycologist = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getMycologist };
+const getMycologistById = (mycologistId) => axios.get(`${baseURL}/mycologists/${mycologistId}.json`);
+
+export default { getMycologist, getMycologistById };
