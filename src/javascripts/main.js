@@ -11,6 +11,13 @@ const init = () => {
   authData.checkLoginStatus();
   auth.logInButton();
   logout.logoutEvent();
+
+  $('body').on('mouseenter', '.myco-card', (e) => {
+    e.target.closest('.card').classList.add('bg-transparent');
+  });
+  $('body').on('mouseleave', '.myco-card', (e) => {
+    e.target.closest('.card').classList.remove('bg-transparent');
+  });
 };
 
 init();
