@@ -2,6 +2,17 @@ import utils from '../../helpers/utils';
 import mushroomData from '../../helpers/data/mushroomData';
 import mushroomComponent from '../mushroom/mushroom';
 
+const removeShroomEvent = (e) => {
+  const mushroomId = e.target.closest('.card').id;
+  console.warn(mushroomId);
+  mushroomData.deleteMushroom(mushroomId)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      buildForest();
+    })
+    .catch((err) => console.warn(err));
+};
+
 const buildForest = () => {
   mushroomData.getMushrooms()
     .then((mushrooms) => {
@@ -15,6 +26,7 @@ const buildForest = () => {
       domString += '</div>';
 
       utils.printToDom('#forest', domString);
+      $('body').on('click', '.delete-shroom', removeShroomEvent);
     })
 
     .catch((err) => console.error(err));
