@@ -5,7 +5,6 @@ const buildMycologist = (e) => {
   const mycologistId = e.target.closest('.card').id;
   smash.getSingleMycoWithShrooms(mycologistId)
     .then((mycologist) => {
-      console.warn(mycologist);
       let domString = `
         <h2 class="text-center">Featured Mycologist</h2>
         <div class="col-12">
