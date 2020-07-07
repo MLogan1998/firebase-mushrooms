@@ -7,7 +7,7 @@ body {
   text-align: center;
   h1 {
     color:white;
-    margin-top: 50px;
+    margin-top: 25px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   };
   .hide {
@@ -22,9 +22,12 @@ body {
   }
 }
 .shroomCard {
-  margin-right: 10px;
+  margin: 10px;
 }
 
 .flex-wrap {
 margin: 30px
+}
+.row {
+  width:95%
 }
