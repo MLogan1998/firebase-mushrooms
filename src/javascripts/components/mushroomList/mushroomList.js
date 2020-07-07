@@ -6,7 +6,6 @@ import showForm from '../createShroom/createShroom';
 
 const removeShroomEvent = (e) => {
   const mushroomId = e.target.closest('.card').id;
-  console.warn(mushroomId);
   smash.totallyRemoveShroomie(mushroomId)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
@@ -38,7 +37,7 @@ const buildForest = () => {
     .then((mushrooms) => {
       let domString = `
         <h2>Forest</h2>
-        <button class="btn btn-danger" id="showMushForm">Create New Mushroom</button>
+        <button class="btn btn-danger" id="showMushForm"><i class="fas fa-plus mr-1"></i>Add Mushroom</button>
         <div class="d-flex flex-wrap">
       `;
       mushrooms.forEach((mushroom) => {
