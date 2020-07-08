@@ -50,9 +50,12 @@ const getMycoShroomsByShroomId = (shroomId) => new Promise((resolve, reject) => 
 
 const deleteMycoMushroom = (mycoMushroomId) => axios.delete(`${baseUrl}/mycologistsMushrooms/${mycoMushroomId}.json`);
 
+const addMycoMush = (newMycoObj) => axios.post(`${baseUrl}/mycologistsMushrooms.json`, newMycoObj);
+
 export default {
   getMycoShroomsByMycoUid,
   getMycoShroomsByShroomId,
   deleteMycoMushroom,
   getAllMycoMushrooms,
+  addMycoMush,
 };
