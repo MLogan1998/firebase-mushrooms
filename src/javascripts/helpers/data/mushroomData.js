@@ -25,4 +25,14 @@ const deleteMushroom = (mushroomId) => axios.delete(`${baseURL}/mushrooms/${mush
 
 const addMushroom = (newMushroomObj) => axios.post(`${baseURL}/mushrooms.json`, newMushroomObj);
 
-export default { getMushrooms, deleteMushroom, addMushroom };
+const getMushById = (mushroomId) => axios.get(`${baseURL}/mushrooms/${mushroomId}.json`);
+
+const updateMushroom = (mushroomId, editedMushroom) => axios.put(`${baseURL}/mushrooms/${mushroomId}.json`, editedMushroom);
+
+export default {
+  getMushrooms,
+  deleteMushroom,
+  addMushroom,
+  getMushById,
+  updateMushroom,
+};

@@ -15,7 +15,8 @@ const mushroomMaker = (mushroom) => {
   });
   domString += `
   </form>
-    <button class="btn btn-danger delete-shroom"><i class="fas fa-trash mr-1"></i>Delete Shrooms</button>
+    <button class="btn btn-info edit-shroom"><i class="fas fa-pen-nib mr-1"></i>Edit Shroom</button>
+    <button class="btn btn-danger delete-shroom"><i class="fas fa-trash mr-1"></i>Delete Shroom</button>
   </div>
 </div>
   `;
