@@ -40,7 +40,7 @@ const buildHuts = () => {
         singlemyco.buildMycologist(e);
       });
       $('body').on('click', '#showMycoForm', showFrom.showForm);
-      $('body').on('click', '#mycoCreator', addMycoEvent);
+      $('body').one('click', '#mycoCreator', addMycoEvent);
     })
 
     .catch((err) => console.error(err));

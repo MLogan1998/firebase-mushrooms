@@ -34,4 +34,30 @@ const totallyRemoveShroomie = (mushroomId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getSingleMycoWithShrooms, totallyRemoveShroomie };
+const getMushroomsWithOwners = () => new Promise((resolve, reject) => {
+  mushroomData.getMushrooms()
+    .then((allMushrooms) => {
+      mycologistData.getMycologist().then((allMycos) => {
+        mycologistMushroomData.getAllMycoMushrooms().then((allMycoMushrooms) => {
+          const finalMushrooms = [];
+          allMushrooms.forEach((singleMushroom) => {
+            const mushroom = { mycologists: [], ...singleMushroom };
+            const mycoMushroomOwner = allMycoMushrooms.filter((mms) => mms.mushroomId === mushroom.id);
+
+            allMycos.forEach((oneMyco) => {
+              const myco = { ...oneMyco };
+              const isOwner = mycoMushroomOwner.find((mms) => mms.mycologistUid === myco.uid);
+              myco.isChecked = isOwner !== undefined;
+              myco.mycologistMushroomId = isOwner ? isOwner.id : `no-${mushroom.id}-${myco.id}`;
+              mushroom.mycologists.push(myco);
+            });
+            finalMushrooms.push(mushroom);
+          });
+          resolve(finalMushrooms);
+        });
+      });
+    })
+    .catch((err) => reject(err));
+});
+
+export default { getSingleMycoWithShrooms, totallyRemoveShroomie, getMushroomsWithOwners };

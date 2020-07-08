@@ -33,6 +33,11 @@ const addShroomEvent = (e) => {
 };
 
 const buildForest = () => {
+  smash.getMushroomsWithOwners()
+    .then((testData) => {
+      console.error('test', testData);
+    })
+    .catch((err) => err);
   mushroomData.getMushrooms()
     .then((mushrooms) => {
       let domString = `
@@ -48,7 +53,7 @@ const buildForest = () => {
       utils.printToDom('#forest', domString);
       $('body').on('click', '.delete-shroom', removeShroomEvent);
       $('body').on('click', '#showMushForm', showForm.showForm);
-      $('body').on('click', '#mushCreator', addShroomEvent);
+      $('body').one('click', '#mushCreator', addShroomEvent);
     })
 
     .catch((err) => console.error(err));
