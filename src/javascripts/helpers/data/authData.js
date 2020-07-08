@@ -20,6 +20,7 @@ const checkLoginStatus = () => {
       logoutButton.removeClass('hide');
       singleMycoDiv.removeClass('hide');
       mushroomList.buildForest();
+      mushroomList.forestEvents();
       mycologistList.buildHuts();
       newShroom.removeClass('hide');
       newMyco.removeClass('hide');

@@ -3,6 +3,21 @@ import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
+const getAllMycoMushrooms = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/mycologistsMushrooms.json`)
+    .then((response) => {
+      const mycoMushies = response.data;
+      const mycologistMushies = [];
+      Object.keys(mycoMushies).forEach((mycoShroomId) => {
+        mycoMushies[mycoShroomId].id = mycoShroomId;
+        mycologistMushies.push(mycoMushies[mycoShroomId]);
+      });
+
+      resolve(mycologistMushies);
+    })
+    .catch((err) => reject(err));
+});
+
 const getMycoShroomsByMycoUid = (mycoUid) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/mycologistsMushrooms.json?orderBy="mycologistUid"&equalTo="${mycoUid}"`)
     .then((response) => {
@@ -35,4 +50,12 @@ const getMycoShroomsByShroomId = (shroomId) => new Promise((resolve, reject) => 
 
 const deleteMycoMushroom = (mycoMushroomId) => axios.delete(`${baseUrl}/mycologistsMushrooms/${mycoMushroomId}.json`);
 
-export default { getMycoShroomsByMycoUid, getMycoShroomsByShroomId, deleteMycoMushroom };
+const addMycoMush = (newMycoObj) => axios.post(`${baseUrl}/mycologistsMushrooms.json`, newMycoObj);
+
+export default {
+  getMycoShroomsByMycoUid,
+  getMycoShroomsByShroomId,
+  deleteMycoMushroom,
+  getAllMycoMushrooms,
+  addMycoMush,
+};
